@@ -2,8 +2,14 @@
 
 namespace App\Entity;
 
+use App\Db\DataBase;
+
+/**
+ * Undocumented Class
+ */
 Class Vaga
 {
+    #region
     /**
      * Identificador unico da vaga.
      *
@@ -40,17 +46,28 @@ Class Vaga
      */
     public string $data;
 
+    #endregion
 
-    /**
-     * Método responsável por cadastrar uma * nova vaga no banco.
-     *
-     * @return boolean
-     */
-    public function cadastrar():bool
+
+
+    public function cadastrar()
     {
-        //DEFINIR A DATA.
+        //DEFINIR A DATA
         $this->data = date('Y-m-d H:i:s');
 
-        return true;
+        //INSERIE A VAGA NO BANCO
+        $obDataBase = new DataBase('vagas'); 
+        $obDataBase->insert([
+            'titulo'    => $this->titulo,
+            'descricao' => $this->descricao,
+            'ativo'     => $this->ativo,
+            'data'      => $this->data
+        ]);
+
+        echo '<pre>';
+            print_r($obDataBase); 
+        echo '</pre>'; 
+        exit;
+
     }
 }
