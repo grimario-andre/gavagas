@@ -57,7 +57,7 @@ Class Vaga
 
         //INSERIE A VAGA NO BANCO
         $obDataBase = new DataBase('vagas'); 
-        $obDataBase->insert([
+        $this->id = $obDataBase->insert([
             'titulo'    => $this->titulo,
             'descricao' => $this->descricao,
             'ativo'     => $this->ativo,
@@ -65,7 +65,7 @@ Class Vaga
         ]);
 
         echo '<pre>';
-            print_r($obDataBase); 
+            print_r($this); 
         echo '</pre>'; 
         exit;
 

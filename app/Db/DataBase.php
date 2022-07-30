@@ -24,13 +24,13 @@ class DataBase
     * Nome do usuario do banco de dados.
     * @var string
     */
-   const USER = 'root';
+   const USER = 'developer';
 
    /**
     * Senha do banco de dados.
     *@var string
     */
-   const PASS = '';
+   const PASS = '@a1b2c3d4e5';
 
 
    /**
@@ -81,7 +81,7 @@ class DataBase
             );
 
         } catch (PDOException $exeception) {
-            echo 'ERROR: ' . $exeception->getMessage();
+            die('ERROR: ' . $exeception->getMessage());
         }
     }
 
@@ -93,16 +93,24 @@ class DataBase
      * @param array  $params
      * @return PDOStatement
      */
-    public  function execute($query, $param = [])
+    public  function execute($query, $params = [])
     {
-        
+        try {
+            $statement = $this->connection->prepare($query);
+            $statement->execute($params);
+
+            return $statement; 
+
+        } catch (PDOException $exeception) {
+            die('ERROR: ' . $exeception->getMessage());
+        }
     }
 
     /**
      * Métedo responsável por inserir dados no banco
      *
      * @param array $values [field => value] 
-     * @return int
+     * @return int ID inserido
      */
     public function insert($values)
     {
@@ -110,12 +118,14 @@ class DataBase
         $fields = array_keys($values);
         $binds  = array_pad([], count($values), '?');
 
+        //MONTA A QUERY
         $query = 'INSERT INTO '.$this->table.' ('.implode(',',$fields).') VALUES ('.implode(',',$binds).')';  
 
-        echo '<pre>';
-        print_r($query); 
-        echo '</pre>'; 
-        exit;
+        //EXECUTA A QUERY
+        $this->execute($query, array_values($values));
+
+        //RETORNA O ID INSERIDO
+        return $this->connection->lastInsertId();
         
     }
 
