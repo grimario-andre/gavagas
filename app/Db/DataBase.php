@@ -106,6 +106,9 @@ class DataBase
         }
     }
 
+
+    #region CRUD
+
     /**
      * Métedo responsável por inserir dados no banco
      *
@@ -126,8 +129,30 @@ class DataBase
 
         //RETORNA O ID INSERIDO
         return $this->connection->lastInsertId();
-        
     }
+
+    /**
+     * Metedo responsavel por executar uma consulta na base
+     *
+     * @param string $where
+     * @param string $order
+     * @param string $limit
+     * @param string $fields
+     * @return array
+     */
+    public function select($where = null, $order = null, $limit = null, $fields = '*')
+    {
+        //DADOS DA QUERY
+        $where = strlen($where) ? 'WHERE'    . $where : '';
+        $order = strlen($order) ? 'ORDER BY' . $order : '';
+        $limit = strlen($limit) ? 'LIMIT'    . $limit : '';
+
+        $query = 'SELECT' . $fields. ' FROM ' . $this->table. '' . $where . '' . $order . '' . $limit;
+
+        return $this->execute($query);
+    }
+
+    #endregion
 
 }
 

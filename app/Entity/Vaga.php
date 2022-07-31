@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Db\DataBase;
+use PDO;
 
 /**
  * Undocumented Class
@@ -49,7 +50,11 @@ Class Vaga
     #endregion
 
 
-
+    /**
+     * Metedo responsavel por cadastrar uma vaga na base
+     *
+     * @return bool
+     */
     public function cadastrar()
     {
         //DEFINIR A DATA
@@ -64,10 +69,20 @@ Class Vaga
             'data'      => $this->data
         ]);
 
-        echo '<pre>';
-            print_r($this); 
-        echo '</pre>'; 
-        exit;
+        return true;
+    }
 
+    /**
+     * Metedo responsavel por obter as vagas do banco de dados
+     *
+     * @param string $where
+     * @param string $order
+     * @param string $limit
+     * @return array
+     */
+    public static function getVagas($where = null, $order = null, $limit = null)
+    {
+        return (new DataBase('vagas'))->select($where,$order,$limit)
+                                        ->fetchAll(PDO::FETCH_CLASS, self::class);
     }
 }
