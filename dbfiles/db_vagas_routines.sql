@@ -34,4 +34,4 @@ USE `db_vagas`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-28  1:16:20
+-- Dump completed on 2022-07-31 12:38:33

@@ -82,7 +82,20 @@ Class Vaga
      */
     public static function getVagas($where = null, $order = null, $limit = null)
     {
-        return (new DataBase('vagas'))->select($where,$order,$limit)
+        return (new DataBase('vagas'))->select($where, $order, $limit)
                                         ->fetchAll(PDO::FETCH_CLASS, self::class);
+    }
+
+
+    /**
+     * Metedo responsavel por buscar uma vaga na base
+     *
+     * @param int $id
+     * @return Vaga
+     */
+    public static function getVaga($id)
+    {
+        return (new DataBase('vagas'))->select('id ='. $id)
+                                      ->fetchObject(self::class);
     }
 }

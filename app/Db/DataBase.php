@@ -24,13 +24,13 @@ class DataBase
     * Nome do usuario do banco de dados.
     * @var string
     */
-   const USER = 'developer';
+   const USER = 'root'; //developer
 
    /**
     * Senha do banco de dados.
     *@var string
     */
-   const PASS = '@a1b2c3d4e5';
+   const PASS = ''; //@a1b2c3d4e5
 
 
    /**
@@ -140,14 +140,15 @@ class DataBase
      * @param string $fields
      * @return array
      */
-    public function select($where = null, $order = null, $limit = null, $fields = '*')
+    public function select($where = null, $order = null, $limit = null, $fields = null)
     {
         //DADOS DA QUERY
         $where = strlen($where) ? 'WHERE'    . $where : '';
         $order = strlen($order) ? 'ORDER BY' . $order : '';
         $limit = strlen($limit) ? 'LIMIT'    . $limit : '';
+        $fields = strlen($fields) ? ''      . $limit : '*';
 
-        $query = 'SELECT' . $fields. ' FROM ' . $this->table. '' . $where . '' . $order . '' . $limit;
+        $query = 'SELECT'. $fields .' FROM '. $this->table .''. $where .''. $order .''. $limit;
 
         return $this->execute($query);
     }
