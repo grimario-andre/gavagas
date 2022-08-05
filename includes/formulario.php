@@ -6,14 +6,14 @@
         </a>
     </section>
 
-    <h2 class="mt-3">Cadastrar vaga</h2>
+    <h2 class="mt-3"><?=TITLE?></h2>
 
     <!-- Inicio Form -->
     <form action="" method="post">
         <!-- Titulo -->
         <div class="form-group">
             <label for="titulo" class="form-label">Título</label>
-            <input type="text" placeholder="Ex: Desenvolvedor Jr. PHP" class="form-control" name="titulo" id="titulo">
+            <input type="text" placeholder="Ex: Desenvolvedor Jr. PHP" class="form-control" name="titulo" id="titulo" value="">
         </div>
 
         <!-- Descrição -->
@@ -30,7 +30,7 @@
                 <!-- Ativo -->
                 <div class="form-check form-check-inline">
                     <label class="form-control">
-                        <input type="radio" name="ativo" value="s"> Ativo
+                        <input type="radio" name="ativo" value="s" checked> Ativo
                     </label>
                 </div>
 

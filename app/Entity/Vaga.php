@@ -73,6 +73,21 @@ Class Vaga
     }
 
     /**
+     * metedo responsavel ppor atualizar a vaga no banco
+     *
+     * @return boolean 
+     */
+    public function atualizar()
+    {
+        return (new DataBase('vagas'))->update('id = '. $this->id,[
+            'titulo'    => $this->titulo,
+            'descricao' => $this->descricao,
+            'ativo'     => $this->ativo,
+            'data'      => $this->data
+        ]);
+    }
+
+    /**
      * Metedo responsavel por obter as vagas do banco de dados
      *
      * @param string $where
@@ -83,7 +98,7 @@ Class Vaga
     public static function getVagas($where = null, $order = null, $limit = null)
     {
         return (new DataBase('vagas'))->select($where, $order, $limit)
-                                        ->fetchAll(PDO::FETCH_CLASS, self::class);
+                                      ->fetchAll(PDO::FETCH_CLASS, self::class);
     }
 
 
@@ -93,9 +108,8 @@ Class Vaga
      * @param int $id
      * @return Vaga
      */
-    public static function getVaga($id)
+    public static function getVaga(int $id)
     {
-        return (new DataBase('vagas'))->select('id ='. $id)
-                                      ->fetchObject(self::class);
+        return (new DataBase('vagas'))->select(' id = '.$id)->fetchObject(self::class);
     }
 }
