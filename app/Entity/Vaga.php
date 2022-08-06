@@ -79,12 +79,14 @@ Class Vaga
      */
     public function atualizar()
     {
-        return (new DataBase('vagas'))->update('id = '. $this->id,[
-            'titulo'    => $this->titulo,
-            'descricao' => $this->descricao,
-            'ativo'     => $this->ativo,
-            'data'      => $this->data
-        ]);
+        return (new DataBase('vagas'))->update('id = '. $this->id,
+            [
+                'titulo'    => $this->titulo,
+                'descricao' => $this->descricao,
+                'ativo'     => $this->ativo,
+                'data'      => $this->data
+            ]
+        );
     }
 
     /**

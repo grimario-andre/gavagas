@@ -28,16 +28,17 @@
             
             <div>
                 <!-- Ativo -->
-                <div class="form-check form-check-inline">
-                    <label class="form-control">
-                        <input type="radio" name="ativo" value="s" checked> Ativo
+                <div class="form-check">
+                    <input class="form-check-input-inline" type="checkbox" name="ativo" value="s" id="ativo" checked>
+                    <label class="form-check-label" for="ativo">
+                        Ativo
                     </label>
                 </div>
-
                 <!-- Inativo -->
-                <div class="form-check form-check-inline">
-                    <label class="form-control">
-                        <input type="radio" name="inativo" value="n"> Inativo
+                <div class="form-check">
+                    <input class="form-check-input-inline" type="checkbox" name="ativo" value="n" id="ativo">
+                    <label class="form-check-label" for="ativo">
+                        Inativo
                     </label>
                 </div>
             </div>

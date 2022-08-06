@@ -20,8 +20,6 @@ if (isset($_POST['titulo'], $_POST['descricao'], $_POST['ativo'])) {
     exit;
 }
 
-
-
 require_once __DIR__ . '/includes/header.php';
-require_once __DIR__ . '/includes/formulario.php';
+require_once __DIR__ . '/includes/formulario1.php';
 require_once __DIR__ . '/includes/footer.php';
