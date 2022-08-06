@@ -2,7 +2,7 @@
 
     <section>
         <a href="index.php">
-            <button class="btn btn-success">Voltar</button>
+            <button type="submit" class="btn btn-success">Voltar</button>
         </a>
     </section>
 
