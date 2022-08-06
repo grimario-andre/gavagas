@@ -79,7 +79,7 @@ Class Vaga
      */
     public function atualizar()
     {
-        return (new DataBase('vagas'))->update('id = '. $this->id,
+        return (new DataBase('vagas'))->update(' id = '. $this->id,
             [
                 'titulo'    => $this->titulo,
                 'descricao' => $this->descricao,
@@ -87,6 +87,18 @@ Class Vaga
                 'data'      => $this->data
             ]
         );
+    }
+
+
+
+    /**
+     * Metedo responsavel por excluir a vaga
+     *
+     * @return bool
+     */
+    public function excluir()
+    {
+        return (new DataBase('vagas'))->delete(' id = '. $this->id);
     }
 
     /**

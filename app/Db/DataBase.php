@@ -173,6 +173,17 @@ class DataBase
         return true;
     }  
 
+
+    public function delete($where)
+    {
+        //MONTA A QUERY
+        $query = 'DELETE FROM '. $this->table .' WHERE '.$where;
+        
+        $this->execute($query);
+
+        //RETORNA A QUERY
+        return true;
+    }
     #endregion
 
 }
