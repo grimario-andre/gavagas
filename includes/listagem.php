@@ -1,4 +1,19 @@
 <?php
+    //MENSAGEM DE CABECALHO
+    $mensagem = '';
+    if (isset($_GET['status'])) {
+        switch ($_GET['status']) {
+            case 'error':
+                $mensagem = '<div class="alert alert-danger">Acao nao Executada!</div>';
+                break;
+            
+            default:
+                $mensagem = '<div class="alert alert-success">Acao Executada!</div>';
+                break;
+        }
+    }
+
+    //EXIBIR LISTA VAGAS
     $resultados = '';
 
     foreach ($vagas as $vaga) {
@@ -23,9 +38,17 @@
         ';
     }
 
+    $resultados = strlen($resultados) ? $resultados : '
+    <tr> 
+        <td colspan="6" class="text-center"><p><strong>Nenhuma Vaga Encontrada</strong></p></td>
+    </tr>    ';
+
 ?>
 
 <main>
+    <!-- Exibir msn Cabecalho -->
+    <?=$mensagem?>
+
     <!-- Sessao Cadastrar -->
     <section>
         <a href="cadastrar.php">
